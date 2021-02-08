@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="feedText"
+            type="java.lang.String" />
+
+        <!--        判断是否为空 显示或者不显示-->
+        <import type="android.text.TextUtils"></import>
+        <import type="android.view.View"></import>
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="@{feedText}"
+        tools:text="测试测试时暗恋就发了快速点击拉法基时代峰峻设计费拉时间段"
+        android:textColor="@color/color_2f2"
+        android:textSize="@dimen/sp_16"
+        android:visibility="@{TextUtils.isEmpty(feedText)?View.GONE:View.VISIBLE}">
+
+
+    </TextView>
+</layout>

@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        joke {
+            storeFile file('D:\\WorkSpace\\MineProject\\GeziJoke\\app\\gezi_joke.jks')
+            storePassword 'a123456'
+            keyPassword 'a123456'
+            keyAlias 'gezi'
+        }
+
+    }
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.example.gezijoke"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.joke
+        }
+        debug {
+            signingConfig signingConfigs.joke
+        }
+    }
+
+
+
+    compileOptions {
+        sourceCompatibility "1.8"
+        targetCompatibility "1.8"
+    }
+
+    dataBinding{
+        enabled=true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+
+    implementation project(':libnavannotation')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //如果你使用kotlin,这里需要使用 kapt project
+    annotationProcessor project(":libnavcompiler")
+    implementation project(':libnetwork')
+    implementation project(':libcommon')
+
+
+
+    //QQ快捷登录
+    implementation files('libs/open_sdk_r6140_lite.jar')
+
+    //错误收集
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
+
+
+}
